@@ -66,39 +66,58 @@ const requestPromise = (url) => {
 };
 
 //run the function
+// requestPromise("movies.com")
+//   .then((response) => {
+//     console.log("Success", response);
+//     //promise juga bisa terjadi (callback hell)👎😅
+//     requestPromise("movies.com")
+//       .then((response) => {
+//         console.log("Success", response);
+//         requestPromise("movies.com")
+//           .then((response) => {
+//             console.log("Success", response);
+//             requestPromise("movies.com")
+//               .then((response) => {
+//                 console.log("Success", response);
+//                 requestPromise("movies.com")
+//                   .then((response) => {
+//                     console.log("Success", response);
+//                   })
+//                   .catch((error) => {
+//                     console.log("failure", error);
+//                   });
+//               })
+//               .catch((error) => {
+//                 console.log("failure", error);
+//               });
+//           })
+//           .catch((error) => {
+//             console.log("failure", error);
+//           });
+//       })
+//       .catch((error) => {
+//         console.log("failure", error);
+//       });
+//   })
+//   .catch((error) => {
+//     console.log("failure", error);
+//   });
+
+//penggunaan promise yang benar
 requestPromise("movies.com")
-  .then((response) => {
-    console.log("Success", response);
-    //promise juga bisa terjadi (callback hell)👎😅
-    requestPromise("movies.com")
-      .then((response) => {
-        console.log("Success", response);
-        requestPromise("movies.com")
-          .then((response) => {
-            console.log("Success", response);
-            requestPromise("movies.com")
-              .then((response) => {
-                console.log("Success", response);
-                requestPromise("movies.com")
-                  .then((response) => {
-                    console.log("Success", response);
-                  })
-                  .catch((error) => {
-                    console.log("failure", error);
-                  });
-              })
-              .catch((error) => {
-                console.log("failure", error);
-              });
-          })
-          .catch((error) => {
-            console.log("failure", error);
-          });
-      })
-      .catch((error) => {
-        console.log("failure", error);
-      });
+  .then((result) => {
+    console.log(result);
+    console.log("page 1");
+    return requestPromise("movies.com");
+  })
+  .then(() => {
+    console.log("page 2");
+    return requestPromise("movies.com");
+  })
+  .then(() => {
+    console.log("page 3");
+    return requestPromise("movies.com");
   })
   .catch((error) => {
-    console.log("failure", error);
+    console.log(error);
   });
