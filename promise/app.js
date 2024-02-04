@@ -57,7 +57,7 @@ const requestPromise = (url) => {
     const delay = Math.floor(Math.random() * 4500) + 500;
     setTimeout(() => {
       if (delay > 3000) {
-        reject("Connection timeout");
+        reject("Connection timeout / lambat cok");
       } else {
         resolve(`Success request data from ${url} (${delay}ms) `);
       }
@@ -121,3 +121,14 @@ requestPromise("movies.com")
   .catch((error) => {
     console.log(error);
   });
+
+//penggunaan error handler di async await
+async function tesHandler() {
+  //menggunakan try & catch
+  try {
+    const result = await requestPromise("movies.com");
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
