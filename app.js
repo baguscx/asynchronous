@@ -33,7 +33,19 @@ const changeBackground = (color, delay) => {
 //   });
 // });
 
-// 2️⃣
-changeBackground("red", 1000)
-  .then(() => changeBackground("green", 1000))
-  .then(() => changeBackground("blue", 1000));
+// // 2️⃣
+// changeBackground("red", 1000)
+//   .then(() => changeBackground("green", 1000))
+//   .then(() => changeBackground("blue", 1000));
+
+//penggunaan await keyword
+async function changeColor() {
+  await changeBackground("red", 1000);
+  // dijalankan tapi menunggu await sebelumnya
+  await changeBackground("green", 1000);
+  await changeBackground("yellow", 1000);
+  await changeBackground("blue", 1000);
+  await changeBackground("black", 1000);
+}
+
+changeColor();
